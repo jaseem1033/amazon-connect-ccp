@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: amazon-connect-ccp
+    env: static
+    staticPublishPath: dist
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: ALLOWALL
+      - path: /*
+        name: Content-Security-Policy
+        value: frame-ancestors *

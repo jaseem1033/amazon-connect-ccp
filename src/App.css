@@ -1,0 +1,190 @@
+/* ========================================
+   AMAZON CONNECT CUSTOM CCP LAYOUT
+   ======================================== */
+
+/* Main app wrapper - contains everything in a row */
+#root > div {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #1a3a5c 0%, #232f3e 100%);
+}
+
+/* ========================================
+   LEFT: AMAZON CONNECT CCP (iframe container)
+   ======================================== */
+#ccp-container {
+  width: 340px !important;
+  min-width: 340px !important;
+  height: 100vh !important;
+  border: none !important;
+  background: #fff;
+  box-shadow: 4px 0 25px rgba(0, 0, 0, 0.3);
+}
+
+/* The wrapper div from ConnectCCP that contains both ccp-container and custom UI */
+#root > div > div:first-child {
+  display: flex !important;
+  gap: 0 !important;
+  flex-shrink: 0;
+}
+
+/* ========================================
+   CUSTOM CCP PANEL (inside ConnectCCP.jsx)
+   This targets the "Custom CCP" div with inline styles
+   ======================================== */
+#ccp-container + div {
+  background: #ffffff !important;
+  border-radius: 12px !important;
+  margin: 20px !important;
+  padding: 24px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
+  width: 320px !important;
+  min-width: 280px !important;
+  max-height: calc(100vh - 40px) !important;
+  overflow-y: auto !important;
+  border: none !important;
+  color: #232f3e !important;
+}
+
+/* ========================================
+   RIGHT: AgentWorkspace & AgentStatePanel
+   ======================================== */
+#root > div > div:nth-child(2),
+#root > div > div:nth-child(3) {
+  background: #ffffff !important;
+  border-radius: 12px;
+  margin: 20px 10px;
+  padding: 24px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  width: 320px !important;
+  min-width: 280px;
+  max-height: calc(50vh - 30px);
+  overflow-y: auto;
+  border: none !important;
+  color: #232f3e !important;
+}
+
+/* ========================================
+   HEADINGS
+   ======================================== */
+h2, h3 {
+  color: #232f3e;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  padding-bottom: 14px;
+  border-bottom: 3px solid #ff9900;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ========================================
+   PARAGRAPHS & TEXT
+   ======================================== */
+p {
+  color: #37475a;
+  font-size: 15px;
+  line-height: 1.8;
+  margin: 12px 0;
+}
+
+strong {
+  color: #232f3e;
+  font-weight: 600;
+}
+
+/* ========================================
+   BUTTONS - Amazon Orange Style
+   ======================================== */
+button {
+  background: linear-gradient(180deg, #ff9900 0%, #e88b00 100%);
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  margin: 8px 8px 8px 0;
+  box-shadow: 0 4px 12px rgba(255, 153, 0, 0.35);
+}
+
+button:hover {
+  background: linear-gradient(180deg, #ffaa22 0%, #ff9900 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 153, 0, 0.45);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Red button for end/decline */
+.btn-red {
+  background: linear-gradient(180deg, #d13212 0%, #b02a0f 100%) !important;
+  box-shadow: 0 4px 12px rgba(209, 50, 18, 0.35);
+}
+
+.btn-red:hover {
+  background: linear-gradient(180deg, #e83a1a 0%, #d13212 100%) !important;
+  box-shadow: 0 6px 20px rgba(209, 50, 18, 0.45);
+}
+
+/* ========================================
+   SELECT / DROPDOWN
+   ======================================== */
+select {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #232f3e;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 12 12'%3E%3Cpath fill='%23232f3e' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  margin-top: 10px;
+}
+
+select:hover {
+  border-color: #ff9900;
+}
+
+select:focus {
+  outline: none;
+  border-color: #ff9900;
+  box-shadow: 0 0 0 4px rgba(255, 153, 0, 0.15);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 1100px) {
+  #root > div {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  #ccp-container {
+    width: 100% !important;
+    min-width: 100% !important;
+    height: 500px !important;
+  }
+  
+  #root > div > div:nth-child(2),
+  #root > div > div:nth-child(3),
+  #root > div > div:nth-child(4) {
+    width: calc(100% - 40px) !important;
+    max-height: none;
+    margin: 10px 20px;
+  }
+}

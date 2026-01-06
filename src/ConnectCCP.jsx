@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import  "amazon-connect-streams";
 
 const CustomCCP = () => {
   const initializedRef = useRef(false);

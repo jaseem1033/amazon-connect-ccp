@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "amazon-connect-streams";
 
 const AgentStatePanel = () => {
   const [agent, setAgent] = useState(null);

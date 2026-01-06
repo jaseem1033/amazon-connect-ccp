@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import  "amazon-connect-streams";
 
 const AgentWorkspace = () => {
   const [customer, setCustomer] = useState(null);

@@ -1,5 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 
+function screenPopByContactId(contactId) {
+  if (!contactId) return;
+
+  const dynamicsOrgUrl = "https://org85ae58e0.crm.dynamics.com"; // change if needed
+
+  const url =
+    `${dynamicsOrgUrl}/main.aspx?` +
+    `pagetype=entityrecord` +
+    `&etn=contact` +
+    `&id=${contactId}`;
+
+  window.open(url, "_blank");
+}
+
+
 const CustomCCP = () => {
   const initializedRef = useRef(false);
   const contactRef = useRef(null);
@@ -35,10 +50,23 @@ const CustomCCP = () => {
       setCallerNumber(number);
       setCallState("INCOMING");
 
+      let screenPopped = false;
+
       contact.onConnected(() => {
         console.log("🟢 Call connected");
         setCallState("CONNECTED");
+
+        const attributes = contact.getAttributes();
+        const contactId = attributes?.contactId?.value;
+
+        console.log("📌 contactId from flow:", contactId);
+
+        if (contactId && !screenPopped) {
+          screenPopped = true;
+          screenPopByContactId(contactId);
+        }
       });
+
 
       contact.onEnded(() => {
         console.log("❌ Call ended");
@@ -46,6 +74,7 @@ const CustomCCP = () => {
         setCallerNumber("—");
         setIsOnHold(false);
         contactRef.current = null;
+        screenPopped = false;
       });
     });
   }, []);

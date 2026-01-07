@@ -92,7 +92,7 @@ const CustomCCP = () => {
       {/* CCP iframe (can be hidden if you want) */}
       <div
         id="ccp-container"
-        style={{ width: "320px", height: "460px", border: "1px solid #ccc"}}
+        style={{ width: "320px", height: "460px", border: "1px solid #ccc", display: "none" }}
       />
 
       {/* Custom CCP UI */}
